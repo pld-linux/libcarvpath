@@ -34,6 +34,7 @@ using %{name}, you will need to install %{name}-devel.
 
 %prep
 %setup -q -n %{name}%{version}
+sed -e 's|/lib\b|/%{_lib}|g' -i src/CMakeLists.txt
 
 %build
 export CFLAGS="%{rpmcflags}"
