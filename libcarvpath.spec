@@ -17,6 +17,10 @@ A simple translation library to map multi level fragment lists to
 virtual paths and back. It is meant to be used by forensic carving
 tools and by pseudo filesystems that give access to data in disk
 imaging file formats (raw,ewf,aff).
+LibCarvpath is a library for computer forensics carving tools. It
+provides the low level needs of zero-storage carving using virtual
+paths. These virtual file paths can be used in conjunction with the
+CarvFS filesystem.
 
 %package devel
 Summary:	Development libraries for %{name}
@@ -24,7 +28,9 @@ Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
 %description devel
-Header files for %{name}.
+This package contains the header files, static libraries and
+development documentation for %{name}. If you like to develop programs
+using %{name}, you will need to install %{name}-devel.
 
 %prep
 %setup -q -n %{name}%{version}
