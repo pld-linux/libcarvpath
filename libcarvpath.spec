@@ -1,7 +1,7 @@
 Summary:	Zero storage carving library
 Name:		libcarvpath
 Version:	2.3.0
-Release:	1
+Release:	2
 License:	LGPL v2.1+
 Group:		Libraries
 Source0:	http://dl.sourceforge.net/carvpath/%{name}%{version}.tgz
