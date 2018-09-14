@@ -1,11 +1,12 @@
 Summary:	Zero storage carving library
 Name:		libcarvpath
 Version:	2.3.0
-Release:	2
+Release:	3
 License:	LGPL v2.1+
 Group:		Libraries
 Source0:	http://dl.sourceforge.net/carvpath/%{name}%{version}.tgz
 # Source0-md5:	dac237151a2fed70f86024abe55f9d5b
+Patch0:		openssl.patch
 URL:		http://ocfa.sourceforge.net/libcarvpath/
 BuildRequires:	cmake
 BuildRequires:	sqlite3-devel
@@ -34,6 +35,7 @@ using %{name}, you will need to install %{name}-devel.
 
 %prep
 %setup -q -n %{name}%{version}
+%patch0 -p1
 sed -e 's|/lib\b|/%{_lib}|g' -i src/CMakeLists.txt
 
 %build

@@ -1,0 +1,24 @@
+--- libcarvpath2.3.0/src/longtoken.c~	2010-03-03 09:12:42.000000000 +0100
++++ libcarvpath2.3.0/src/longtoken.c	2018-09-14 20:48:47.261547469 +0200
+@@ -86,12 +86,17 @@ char *  carvpath_longtoken_lookup(const
+ 
+ /* Note: longtoken is overwitten by this function !!  */
+ int carvpath_longtoken_fixup(char *longtoken,sqlite3 *db) {
+-  EVP_MD_CTX CtxSHA1;
+-  EVP_DigestInit(&CtxSHA1, EVP_sha1());
+-  EVP_DigestUpdate(&CtxSHA1,longtoken, strlen(longtoken));
++  EVP_MD_CTX *CtxSHA1;
++  CtxSHA1 = EVP_MD_CTX_create();
++  if (!EVP_DigestInit(CtxSHA1, EVP_sha1())) {
++    errno=CARVPATH_ERR_ALLOC;
++    return 0;
++  }
++  EVP_DigestUpdate(CtxSHA1,longtoken, strlen(longtoken));
+   unsigned char sha1Buffer[EVP_MAX_MD_SIZE];
+   unsigned int sha1l;
+-  EVP_DigestFinal(&CtxSHA1, sha1Buffer, &sha1l);
++  EVP_DigestFinal(CtxSHA1, sha1Buffer, &sha1l);
++  EVP_MD_CTX_destroy(CtxSHA1);
+   if (strlen(longtoken) < 41)
+      return 0; 
+   int i; 
