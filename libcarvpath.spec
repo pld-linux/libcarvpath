@@ -3,7 +3,7 @@ Summary(pl.UTF-8):	Biblioteka do sekcji bez zapisu danych
 Name:		libcarvpath
 Version:	2.3.0
 %define	subver	rc8
-Release:	4
+Release:	5
 License:	LGPL v2.1+
 Group:		Libraries
 #Source0Download: https://github.com/DNPA/libcarvpath/releases
